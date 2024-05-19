@@ -66,11 +66,12 @@
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
+    //registration form
 $(document).ready(function(){
     $(".btn .btn-primary .rounded-pill").click(function (){
         window.location.href = "Register.html";
     }) ;
-        
+   
     
 });
 
