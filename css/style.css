@@ -172,7 +172,6 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(20, 20, 31, .4), rgba(20, 20, 31, .4)), url(../img/bg\ img.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -268,7 +267,7 @@
 
 /*** Booking ***/
 .booking {
-    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../img/booking.jpg);
+    background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../img/pexels-photo-5717775.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
