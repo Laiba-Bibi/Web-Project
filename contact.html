@@ -165,6 +165,10 @@
                         tabindex="0"></iframe>
                 </div>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
                     <form>
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -196,6 +200,28 @@
                             </div>
                         </div>
                     </form>
+                    <script>
+                        $(document).ready(function() {
+                            $('#contactForm').on('submit', function(e) {
+                                e.preventDefault(); // Prevent the default form submission
+                    
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'submit_form.php', // Change this to the URL of your server-side form handler
+                                    data: $(this).serialize(), // Serialize form data
+                                    success: function(response) {
+                                        alert('Message successfully sent');
+                                        $('#contactForm')[0].reset(); // Reset form fields
+                                    },
+                                    error: function() {
+                                        alert('There was an error sending your message. Please try again.');
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                    
+
                 </div>
             </div>
         </div>
