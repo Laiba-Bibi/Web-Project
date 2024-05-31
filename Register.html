@@ -4,44 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/Register.css">
-    <title>Registration Form </title>
+    <title>Registration Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function(event) {
+                event.preventDefault(); // Prevent the default form submission
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+
+                var formData = {
+                    name: name,
+                    email: email,
+                    password: password
+                };
+
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        $("#response").html("<div class='alert alert-success'>Hi! " + response.name + " You have Registered Successfully.</div>");
+                    },
+                    error: function(xhr, status, error) {
+                        if (xhr.status == 404) {
+                            $("#response").html("<div class='alert alert-danger'>File not found</div>");
+                        } else {
+                            $("#response").html("<div class='alert alert-danger'>An error occurred: " + error + "</div>");
+                        }
+                    }
+                });
+            });
+        });
     </script>
-    <script src="./js/main.js"></script>
-
-
-    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
-
 </head>
 <body>
-<div class="container">
-    <div class="from-box">
-        <h1>Register Now</h1>
-    <form >
-        <div class="input-group">
-            <div class="inputfield">
-                <i class="fa fa-user"></i>
-                <input type="text" placeholder="Name">
-            </div>
-            <div class="inputfield">
-                <i class="fa fa-envelope"></i>
-                <input type="email" placeholder="Email">
-            </div>
-            <div class="inputfield">
-                <i class="fa fa-lock"></i>
-                <input type="password" placeholder="Password">
-            </div>
-            <p> Lost password <a href="#"> Click Here! </a></p>
+    <div class="container">
+        <div class="from-box">
+            <h1>Register Now</h1>
+            <form>
+                <div class="input-group">
+                    <div class="inputfield">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="name" placeholder="Name">
+                    </div>
+                    <div class="inputfield">
+                        <i class="fa fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="inputfield">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password">
+                    </div>
+                    <p> Lost password <a href="#"> Click Here! </a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="btn1"> Register </button>
+                    <button type="button" class="disable"> Login</button>
+                </div>
+                <div id="response"></div>
+            </form>
         </div>
-        <div class="btn-field">
-            <button type="button" id="btn1"> Register  </button>
-            <button type="button" class="disable"> Login</button>
-
-        </div>
-    </form>
     </div>
-</div>
 </body>
 </html>
